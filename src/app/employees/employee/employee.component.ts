@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -36,6 +37,6 @@ export class EmployeeComponent implements OnInit {
     let data = form.value;
     this.firestore.collection('employees').add(data);
     this.resetForm(form);
-    this.toastr.success('Submitted Successfully..!')
+    this.toastr.success('Submitted Successfully..!','Employee Registration')
   }
 }
