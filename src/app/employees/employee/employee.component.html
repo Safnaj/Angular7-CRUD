@@ -1,0 +1,29 @@
+<div class="form">
+  <h1 class="text-center">Employee Register</h1>
+<br>
+  <form #form = "ngForm" autocomplete="off" (submit)="onSubmit(form)">
+      <fieldset>        
+          <div class="form-group">
+              <label for="categoryname"><span class="FieldInfo">Name : </span></label>
+              <input class="form-control" name="name" #name="ngModel" [(ngModel)]="service.formData.name" placeholder="Enter Name" required>
+              <div *ngIf="name.invalid && name.touched" class="validation-error">This field is required.</div>
+          </div>
+          <div class="form-group">
+              <label for="categoryname"><span class="FieldInfo">Emp.Code : </span></label>
+              <input class="form-control" name="empCode" #empCode="ngModel" [(ngModel)]="service.formData.empCode" placeholder="Enter Emp Code" required>
+              <div *ngIf="empCode.invalid && empCode.touched" class="validation-error">This field is required.</div>
+          </div>
+          <div class="form-group">
+              <label for="categoryname"><span class="FieldInfo">Position : </span></label>
+              <input class="form-control" name="position" #position="ngModel" [(ngModel)]="service.formData.position" placeholder="Enter Position" required>
+              <div *ngIf="position.invalid && position.touched" class="validation-error">This field is required.</div>
+          </div>
+          <div class="form-group">
+              <label for="categoryname"><span class="FieldInfo">Mobile : </span></label>
+              <input class="form-control" name="mobile" #mobile="ngModel" [(ngModel)]="service.formData.mobile" placeholder="Enter Mobile" required>
+              <div *ngIf="mobile.invalid && mobile.touched" class="validation-error">This field is required.</div>
+          </div>
+          <input class="btn btn-primary btn-block" [disabled]="form.invalid" type="submit" name="Submit" value="Submit">
+      </fieldset>
+  </form>
+</div>
