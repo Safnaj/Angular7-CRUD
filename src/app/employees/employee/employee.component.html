@@ -2,6 +2,7 @@
   <h1 class="text-center">Employee Register</h1>
 <br>
   <form #form = "ngForm" autocomplete="off" (submit)="onSubmit(form)">
+      <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
       <fieldset>        
           <div class="form-group">
               <label for="categoryname"><span class="FieldInfo">Name : </span></label>

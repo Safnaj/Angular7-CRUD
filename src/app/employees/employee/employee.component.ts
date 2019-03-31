@@ -14,7 +14,7 @@ export class EmployeeComponent implements OnInit {
 
   constructor(private service : EmployeeService,
     private firestore : AngularFirestore,
-    private toastr : ToastrService) { }
+    private toastr : ToastrService,) { }
 
   ngOnInit() {
     this.resetForm();
@@ -34,9 +34,13 @@ export class EmployeeComponent implements OnInit {
   }
 
   onSubmit(form:NgForm){
-    let data = form.value;
-    this.firestore.collection('employees').add(data);
+    let data = Object.assign({}, form.value);
+    delete data.id;
+    if(form.value.id == null)   //Check Hidden ID value
+      this.firestore.collection('employees').add(data);   //Insert Function
+    else
+      this.firestore.doc('employees/'+form.value.id).update(data)   //Update Function
     this.resetForm(form);
-    this.toastr.success('Submitted Successfully..!','Employee Registration')
+    this.toastr.success('Submitted Successfully..!','Employee App');
   }
 }
